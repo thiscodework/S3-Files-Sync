@@ -62,7 +62,7 @@ def view_page():
             image_key = image_url.split("/")[-1]
 
             # Add a delete button for each image
-            if st.button(f"Delete {image_key}", key=f"delete_{image_key}"):
+            if st.button(f"Delete", key=f"delete_{image_key}"):
                 delete_image_from_s3(image_key)
                 st.success(f"Image {image_key} deleted!")
 
