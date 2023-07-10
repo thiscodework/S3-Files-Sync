@@ -58,6 +58,16 @@ def view_page():
         for image_url in image_urls:
             st.image(image_url, use_column_width=True)
 
+     # Get the filename from the image URL
+            image_key = image_url.split("/")[-1]
+
+            # Add a delete button for each image
+            if st.button(f"Delete {image_key}", key=f"delete_{image_key}"):
+                delete_image_from_s3(image_key)
+                st.success(f"Image {image_key} deleted!")
+
+            st.markdown("---")
+
 def edit_image(image, brightness, contrast, saturation):
     enhancer = ImageEnhance.Brightness(image)
     image = enhancer.enhance(1 + brightness / 100.0)
@@ -69,6 +79,10 @@ def edit_image(image, brightness, contrast, saturation):
     image = enhancer.enhance(1 + saturation / 100.0)
 
     return image
+
+def delete_image_from_s3(image_key):
+    s3.delete_object(Bucket=bucket_name, Key=f"{image_key}")
+
 
 def save_image_to_s3(image, filename):
     edited_image_stream = io.BytesIO()
