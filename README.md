@@ -2,6 +2,9 @@
 
 This is a web application built using Streamlit, which allows you to upload images to an AWS S3 bucket, perform basic editing operations on the images, and view the uploaded and edited images.
 
+![App Preview](https://github.com/thiscodework/S3-Files-Sync/blob/main/images/image.png)
+![App Preview](https://github.com/thiscodework/S3-Files-Sync/blob/main/images/image1.png)
+
 ## Prerequisites
 
 Before running the application, ensure you have the following:
