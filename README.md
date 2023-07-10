@@ -1,36 +1,92 @@
 # S3 Image Upload and Edit Web App
 
-This web app allows users to upload images to an AWS S3 bucket and perform various editing operations on the uploaded images.
+This is a web application built using Streamlit, which allows you to upload images to an AWS S3 bucket, perform basic editing operations on the images, and view the uploaded and edited images.
 
 ## Prerequisites
 
-Before running the web app, ensure that you have the following:
+Before running the application, ensure you have the following:
 
-- Python 3.6 or higher installed on your system.
-- AWS account credentials (Access Key ID and Secret Access Key) with sufficient permissions to interact with S3.
-- Python packages listed in the `requirements.txt` file. You can install them using the command:
-pip install -r requirements.txt
+- Python 3.9 or later installed
+- AWS account with S3 access and credentials (access key and secret key)
+- Docker (optional, for containerization)
 
-## Instructions
+## Installation
 
-1. Clone the repository or download the source code files.
+1. Clone the repository:
 
-2. Install the required Python packages mentioned in the `requirements.txt` file. You can use the following command:
-3. Open the `app.py` file and replace the placeholder values for `YOUR_ACCESS_KEY`, `YOUR_SECRET_KEY`, and `YOUR_BUCKET_NAME` with your own AWS credentials and S3 bucket details.
+   ```shell
+   git clone https://github.com/your-username/s3-image-app.git
+   ```
 
-4. Run the following command in your terminal to start the web app:
+2. Change to the project directory:
+
+   ```shell
+   cd s3-image-app
+   ```
+
+3. Create a virtual environment (optional but recommended):
+
+   ```shell
+   python3 -m venv venv
+   source venv/bin/activate   # For Linux/Mac
+   venv\Scripts\activate      # For Windows
+   ```
+
+4. Install the required dependencies:
+
+   ```shell
+   pip install -r requirements.txt
+   ```
+
+5. Configure AWS credentials:
+
+   - Open the AWS IAM console and create an access key and secret key for your user.
+   - Configure the AWS CLI with your access key and secret key:
+
+     ```shell
+     aws configure
+     ```
+
+     Enter your access key, secret key, default region, and output format.
+
+6. Set up AWS S3 bucket:
+
+   - Create an S3 bucket in the desired region using the AWS S3 console.
+   - Ensure the bucket has proper permissions to allow uploading and retrieving objects.
+
+## Usage
+
+To run the application locally, execute the following command:
+
+```shell
 streamlit run app.py
+```
 
-5. The web app will start running locally, and you can access it by opening the provided URL in your web browser.
+This will start the Streamlit development server, and you can access the application by visiting http://localhost:8501 in your web browser.
 
-6. Use the file upload functionality to select and upload multiple images (JPG, JPEG, PNG) to the web app.
+Alternatively, you can use Docker to containerize the application:
 
-7. For each uploaded image, adjust the sliders for brightness, contrast, and saturation to apply desired edits.
+1. Build the Docker image:
 
-8. The edited image will be displayed, and you can save it by clicking the "Save" button. It will be uploaded to the configured S3 bucket with a modified filename.
+   ```shell
+   docker build -t s3-image-app .
+   ```
 
-9. Follow the on-screen instructions and enjoy using the S3 Image Upload and Edit web app!
+2. Run the Docker container:
+
+   ```shell
+   docker run -p 8501:8501 s3-image-app
+   ```
+
+   Access the application by visiting http://localhost:8501 in your web browser.
+
+## Notes
+
+- Make sure to replace the AWS credentials and bucket name in the `app.py` file with your own values.
+- The application assumes JPEG images by default. Modify the code as per your requirements for supporting other image formats.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+Certainly! Here's a markdown template you can use for your project:
