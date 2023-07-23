@@ -62,7 +62,7 @@ Before running the application, ensure you have the following:
 To run the application locally, execute the following command:
 
 ```shell
-streamlit run app.py
+streamlit run app/app.py
 ```
 
 This will start the Streamlit development server, and you can access the application by visiting http://localhost:8501 in your web browser.

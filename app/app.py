@@ -81,7 +81,13 @@ def edit_image(image, brightness, contrast, saturation):
     return image
 
 def delete_image_from_s3(image_key):
-    s3.delete_object(Bucket=bucket_name, Key=f"{image_key}")
+    try:
+        s3.delete_object(Bucket=bucket_name, Key=f"{image_key}")
+        st.success(f"Image '{image_key}' deleted successfully!")
+    except Exception as e:
+        st.error(f"Error occurred while deleting '{image_key}' from '{bucket_name}': {str(e)}")
+
+
 
 
 def save_image_to_s3(image, filename):
