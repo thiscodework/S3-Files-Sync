@@ -72,13 +72,15 @@ Alternatively, you can use Docker to containerize the application:
 1. Build the Docker image:
 
    ```shell
-   docker build -t s3-image-app .
+   docker build -t s3_image_sync .
    ```
+   or 
+   docker buildx build -t s3_image_sync .
 
 2. Run the Docker container:
 
    ```shell
-   docker run -p 8501:8501 s3-image-app
+   docker run -p 8501:8501 s3_image_sync
    ```
 
    Access the application by visiting http://localhost:8501 in your web browser.
